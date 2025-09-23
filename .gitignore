@@ -1,0 +1,25 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# VSCode / PyCharm project settings
+.vscode/
+.idea/
+
+# macOS / Linux system files
+.DS_Store
+Thumbs.db
+
+# Python packaging stuff (if you ever build wheels)
+build/
+dist/
+*.egg-info/
