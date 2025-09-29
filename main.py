@@ -1,4 +1,5 @@
 from utils import make_linear, train_test_split
+from models import SimpleLinearRegression
 
 X, y = make_linear(100, 7, 4.0, 6, 42069)
 
@@ -21,3 +22,12 @@ print(y_train.shape)
 
 print(y_test[:5])
 print(y_test.shape)
+
+linreg = SimpleLinearRegression()
+linreg.fit(X_train, y_train)
+y_pred = linreg.predict(X_test)
+r_squared = linreg.score(X_test, y_test)
+
+# figure out how to interpret this, then maybe confusion matrix probably
+# metrics.py
+print("r-squared score: " + str(r_squared))

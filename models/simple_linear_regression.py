@@ -1,6 +1,6 @@
 import numpy as np
 
-class LinearRegression:
+class SimpleLinearRegression:
     def __init__(self, fit_intercept=True):
         '''
         A simple linear regression model that uses OLS (ordinary least squares)

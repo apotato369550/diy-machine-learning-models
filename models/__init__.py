@@ -1,1 +1,1 @@
-from .linear_regression import LinearRegression
+from .simple_linear_regression import SimpleLinearRegression
