@@ -1,6 +1,7 @@
 from utils import make_linear, train_test_split
 from utils import mse, rmse, mae, r2_score
 from models import SimpleLinearRegression
+import matplotlib.pyplot as plt
 
 X, y = make_linear(100, 3, 4.0, 6, 42069)
 
@@ -25,6 +26,19 @@ print(y_train.shape)
 
 print(y_test[:5])
 print(y_test.shape)
+
+# figure out how to add line of best fit (linear regression line) into visualization
+
+plt.figure(figsize=(8, 6))
+plt.scatter(X_train, y_train, color="blue", alpha=0.6, label="Train")
+plt.scatter(X_test, y_test, color="green", alpha=0.6, label="Test")
+
+plt.title("Simple Linear Regression Fit")
+plt.xlabel("X feature")
+plt.ylabel("y target")
+plt.legend()
+plt.show()
+
 
 linreg = SimpleLinearRegression()
 linreg.fit(X_train, y_train)
