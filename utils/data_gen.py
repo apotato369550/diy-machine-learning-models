@@ -31,3 +31,8 @@ def make_linear(n_samples=50, noise=5, coef=5.0, intercept=45.0, seed=None):
     y = y_true + noise_values
 
     return X, y
+
+def make_logistic(n_samples=100, n_features=1, coef=None, intercept=0.0, noise=0.1, random_state=None):
+    rng = np.random.default_rng(random_state)
+
+    return

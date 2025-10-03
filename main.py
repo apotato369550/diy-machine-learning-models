@@ -27,7 +27,7 @@ print(y_train.shape)
 print(y_test[:5])
 print(y_test.shape)
 
-# figure out how to add line of best fit (linear regression line) into visualization
+# figure out how to add line of best fit (linear regression line) into visualization - dpme
 
 plt.figure(figsize=(8, 6))
 plt.scatter(X_train, y_train, color="blue", alpha=0.6, label="Train")
@@ -45,7 +45,7 @@ linreg.fit(X_train, y_train)
 y_pred = linreg.predict(X_test)
 r_squared = linreg.score(X_test, y_test)
 
-# figure out how to interpret this, then maybe confusion matrix probably
+# figure out how to interpret this, then maybe confusion matrix probably - done
 # metrics.py
 print("r-squared score: " + str(r_squared))
 
