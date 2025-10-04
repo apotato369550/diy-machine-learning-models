@@ -33,6 +33,25 @@ def make_linear(n_samples=50, noise=5, coef=5.0, intercept=45.0, seed=None):
     return X, y
 
 def make_logistic(n_samples=100, n_features=1, coef=None, intercept=0.0, noise=0.1, random_state=None):
+    # generate random normal dist
     rng = np.random.default_rng(random_state)
+    X = rng.normal(size=(n_samples, n_features))
 
-    return
+    # set coefficients if none specified
+    if coef is None:
+        coef = rng.uniform(-2, 2, size=n_features)
+
+    # linear combination. dot product of x and coef matrix
+    linear_combination = X.dot(coef) + intercept
+
+    # get sigmoid for probabilities
+    probs = 1 / (1 + np.exp(-linear_combination))
+
+    # get y sample from bernoulli distribution
+    y = rng.binomial(1, probs)
+
+    if noise > 0:
+        flip_mask = rng.random(n_samples) < noise
+        y[flip_mask] = 1 - y[flip_mask]
+
+    return X, y, coef, intercept
