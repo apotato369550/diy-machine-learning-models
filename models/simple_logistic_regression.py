@@ -63,10 +63,16 @@ class SimpleLogisticRegression:
 
     
     def predict_proba(self, X):
-        return
+        # predict class probabilities
+        X = np.array(X)
+        linear_model = np.dot(X, self.coef_) + (self.intercept_ if self.fit_intercept else 0)
+        return self._sigmoid(linear_model)
     
     def predict(self, X, threshold=0.5):
-        return
+        # predict binary class labels 0 or 1
+        proba = self.predict_proba(X)
+        return (proba >= threshold).astype(int)
     
     def score(self, X, y):
-        return
+        y_pred = self.predict(X)
+        return np.mean(y_pred == y)
