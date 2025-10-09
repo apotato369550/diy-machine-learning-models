@@ -56,7 +56,8 @@ class SimpleLogisticRegression:
 
             # print loss if necessary
             if self.verbose and i % 100 == 0:
-                loss -= -np.mean(y * np.log(y_pred + 1e-9) + (1 - y) * np.log(1 - y_pred + 1e-9))
+                # fix: from '-=' to '='
+                loss = -np.mean(y * np.log(y_pred + 1e-9) + (1 - y) * np.log(1 - y_pred + 1e-9))
                 print(f"Iteration {i}: Loss = {loss:.4f}")
         
         return self
