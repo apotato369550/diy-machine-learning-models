@@ -55,3 +55,10 @@ def make_logistic(n_samples=100, n_features=1, coef=None, intercept=0.0, noise=0
         y[flip_mask] = 1 - y[flip_mask]
 
     return X, y, coef, intercept
+
+def make_decision_tree(n_samples=200, n_features=2, n_classes=2, random_state=None):
+    X, y = make_logistic(
+        n_samples=n_samples, 
+        n_features=n_features,
+    )
+    return X, y
