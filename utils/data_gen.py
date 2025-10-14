@@ -56,9 +56,21 @@ def make_logistic(n_samples=100, n_features=1, coef=None, intercept=0.0, noise=0
 
     return X, y, coef, intercept
 
-def make_decision_tree(n_samples=200, n_features=2, n_classes=2, random_state=None):
-    X, y = make_logistic(
-        n_samples=n_samples, 
-        n_features=n_features,
-    )
+def make_decision_tree(n_samples=200, n_features=2, random_state=None, noise=0.1):
+    '''
+    create a dataset for decision tree classification
+    '''
+
+    rng = np.random.default_rng(random_state)
+
+    X = rng.uniform(-1, 1, size=(n_samples, n_features))
+
+    y = np.zeros(n_samples, dtype=int)
+    rule = (X[:, 0] + X[:, 1] > 0) & (X[:, 0] > -0.3)
+    y[rule] = 1
+
+    if noise > 0:
+        flip_mask = rng.random(n_samples) < noise
+        y[flip_mask] = 1 - y[flip_mask]
+
     return X, y
