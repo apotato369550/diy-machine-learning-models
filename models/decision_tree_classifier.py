@@ -127,5 +127,5 @@ class SimpleDecisionTreeClassifier:
         # X = feature matrix for test samples
         # y = true labels for test samples
         # preds = our model's predictions for these samples
-        preds = self.Predict(X)
+        preds = self.predict(X)
         return np.mean(preds == y)
