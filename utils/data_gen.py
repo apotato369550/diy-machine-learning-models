@@ -74,3 +74,19 @@ def make_decision_tree(n_samples=200, n_features=2, random_state=None, noise=0.1
         y[flip_mask] = 1 - y[flip_mask]
 
     return X, y
+
+def make_clusters(n_samples=200, n_features=2, n_clusters=3, cluster_std=0.3, random_state = None):
+    rng = np.random.default_rng(random_state)
+    centers = rng.uniform(-5, 5, size=(n_clusters, n_features))
+    X = []
+    y = []
+
+    for i, center in enumerate(center):
+        points = center + rng.normal(scale=cluster_std, size=(n_samples // n_clusters, n_features))
+        X.append(points)
+        y.append(np.full(points.shape[0], i))
+
+    X = np.vstack(X)
+    y = np.concatenate(y)
+
+    return X, y, centers
