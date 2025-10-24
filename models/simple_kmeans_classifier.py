@@ -7,7 +7,26 @@ class KMeans:
         self.random_state = random_state
 
     def fit(self, X):
-        return
+        rng = np.random.default_rng(self.random_state)
+
+        # randomly pick centroids
+        random_idx = rng.choice(X.shape[0], self.n_clusters, replace=False)
+        self.centroids = X[random_idx]
+
+        for _ in range(self.n_iters):
+            #assign clusters
+            labels = self._assign_clusters(X)
+
+            # update the centroids
+            new_centroids = np.array[X[labels == k].mean(axis=0) for k in range(self.n_clusters)]
+    
+            # stop if converged
+            if np.allclose(self.centroids, new_centroids):
+                break
+
+            self.centroids = new_centroids
+
+        self.labels_ = labels
     
     def _assign_clusters(self, X):
         return
