@@ -18,18 +18,18 @@ class KMeans:
             labels = self._assign_clusters(X)
 
             # update the centroids
-            new_centroids = np.array[X[labels == k].mean(axis=0) for k in range(self.n_clusters)]
+            new_centroids = np.array([X[labels == k].mean(axis=0) for k in range(self.n_clusters)])
     
             # stop if converged
             if np.allclose(self.centroids, new_centroids):
                 break
-
             self.centroids = new_centroids
 
         self.labels_ = labels
     
     def _assign_clusters(self, X):
-        return
+        distances = np.linalg.norm(X[:, np.newaxis] - self.centroids, axis=2)
+        return np.argmin(distances, axis=1)
     
     def predict(self, X):
-        return
+        return self._assign_clusters(X)
