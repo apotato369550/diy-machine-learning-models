@@ -7,3 +7,10 @@ X, y_true, centers = make_clusters(n_samples=300, n_clusters=3, random_state=42)
 kmeans = KMeans(n_clusters=3, random_state=42)
 kmeans.fit(X)
 labels = kmeans.labels_
+
+plt.figure(figsize=(8, 6))
+plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='coolwarm', alpha=0.7)
+plt.scatter(kmeans.centroids[:, 0], kmeans.centroids[:, 1], marker='*', s=300, c='black', alpha=1)
+plt.title("K-Means Clustering Results")
+plt.legend()
+plt.show()

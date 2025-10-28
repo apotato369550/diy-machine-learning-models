@@ -81,7 +81,7 @@ def make_clusters(n_samples=200, n_features=2, n_clusters=3, cluster_std=0.3, ra
     X = []
     y = []
 
-    for i, center in enumerate(center):
+    for i, center in enumerate(centers):
         points = center + rng.normal(scale=cluster_std, size=(n_samples // n_clusters, n_features))
         X.append(points)
         y.append(np.full(points.shape[0], i))
