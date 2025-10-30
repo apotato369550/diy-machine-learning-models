@@ -90,3 +90,11 @@ def make_clusters(n_samples=200, n_features=2, n_clusters=3, cluster_std=0.3, ra
     y = np.concatenate(y)
 
     return X, y, centers
+
+
+def make_naive_bayes_data(n_samples=200, n_features=3, random_state=None):
+    rng = np.random.default_rng(random_state)
+    X = rng.normal(0, 1, size=(n_samples, n_features))
+    y = (X[:, 0] + 0.5 * X[:, 1] + rng.normal(0, 0.5, n_samples) > 0).astype(int)
+
+    return X, y
