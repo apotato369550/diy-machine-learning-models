@@ -23,7 +23,15 @@ class SimpleGaussianNB:
         return numerator / denominator
     
     def _posterior(self, x):
-        return
+        posteriors = []
+
+        for idx, _ in enumerate(self.classes):
+            prior = np.log(self.priors[idx])
+            class_conditional = np.sum(np.log(self._pdf(idx, x)))
+            posterior = prior + class_conditional
+            posteriors.append(posterior)
+        return self.classes[np.argmax(posteriors)]
+
     
     def predict(self, X):
-        return
+        return np.array([self._posterior(x) for x in X])
