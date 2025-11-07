@@ -20,3 +20,28 @@ plt.xlabel("Feature 1")
 plt.ylabel("Feature 2")
 plt.legend()
 plt.show()
+
+model = SimpleGaussianNB()
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+accuracy = (y_pred == y_test).mean()
+print(f"Accuracy: {accuracy}")
+
+
+# optional: visualize decision boundary (for 2D)
+if X.shape[1] == 2:
+    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+    xx, yy = np.meshgrid(np.linspace(x_min, x_max, 200),
+                         np.linspace(y_min, y_max, 200))
+    grid = np.c_[xx.ravel(), yy.ravel()]
+    Z = model.predict(grid).reshape(xx.shape)
+
+    plt.contourf(xx, yy, Z, cmap="coolwarm", alpha=0.3)
+    plt.scatter(X_test[:, 0], X_test[:, 1], c=y_test, cmap="coolwarm", edgecolor="k")
+    plt.title("Naive Bayes Decision Boundary")
+    plt.xlabel("Feature 1")
+    plt.ylabel("Feature 2")
+    plt.show()
