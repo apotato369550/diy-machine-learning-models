@@ -2,6 +2,9 @@ from utils import make_linear, train_test_split
 from utils import mse, rmse, mae, r2_score
 from models import SimpleLinearRegression
 import matplotlib.pyplot as plt
+import os
+
+os.makedirs("plots", exist_ok=True)
 
 X, y = make_linear(100, 3, 4.0, 6, 42069)
 
@@ -37,7 +40,8 @@ plt.title("Simple Linear Regression Fit")
 plt.xlabel("X feature")
 plt.ylabel("y target")
 plt.legend()
-plt.show()
+plt.savefig("plots/linreg_fit.png")
+plt.close()
 
 
 linreg = SimpleLinearRegression()

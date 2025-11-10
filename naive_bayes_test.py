@@ -3,6 +3,9 @@ from models.simple_gaussian_naive_bayes import SimpleGaussianNB
 from utils import train_test_split
 import matplotlib.pyplot as plt
 import numpy as np
+import os
+
+os.makedirs("plots", exist_ok=True)
 
 X, y = make_naive_bayes_data(n_samples=200, n_features=2, random_state=42)
 
@@ -19,7 +22,8 @@ plt.title("Naive Bayes Classification Data")
 plt.xlabel("Feature 1")
 plt.ylabel("Feature 2")
 plt.legend()
-plt.show()
+plt.savefig("plots/naive_bayes_data.png")
+plt.close()
 
 model = SimpleGaussianNB()
 model.fit(X_train, y_train)
@@ -39,9 +43,11 @@ if X.shape[1] == 2:
     grid = np.c_[xx.ravel(), yy.ravel()]
     Z = model.predict(grid).reshape(xx.shape)
 
+    plt.figure(figsize=(8, 6))
     plt.contourf(xx, yy, Z, cmap="coolwarm", alpha=0.3)
     plt.scatter(X_test[:, 0], X_test[:, 1], c=y_test, cmap="coolwarm", edgecolor="k")
     plt.title("Naive Bayes Decision Boundary")
     plt.xlabel("Feature 1")
     plt.ylabel("Feature 2")
-    plt.show()
+    plt.savefig("plots/naive_bayes_decision_boundary.png")
+    plt.close()

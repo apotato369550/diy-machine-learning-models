@@ -3,6 +3,9 @@ from utils import train_test_split
 from models.simple_logistic_regression import SimpleLogisticRegression
 import matplotlib.pyplot as plt
 import numpy as np
+import os
+
+os.makedirs("plots", exist_ok=True)
 
 # create toy dataset
 # realization: x isn't 1d haha. it has 2 features
@@ -31,7 +34,8 @@ plt.title("Simple Logistic Regression Dataset")
 plt.xlabel("Feature 1")
 plt.ylabel("Target (y)")
 plt.legend()
-plt.show()
+plt.savefig("plots/logreg_feature1.png")
+plt.close()
 
 # plot 2: all features
 # issue: ok there's something wrong with this part
@@ -45,7 +49,8 @@ plt.title("Logistic Regression Dataset")
 plt.xlabel("Feature 1")
 plt.ylabel("Feature 2")
 plt.legend()
-plt.show()
+plt.savefig("plots/logreg_dataset.png")
+plt.close()
 
 # initialize model and train
 logreg = SimpleLogisticRegression(learning_rate=0.1, n_iters=2000, verbose=True)
@@ -60,12 +65,14 @@ xx, yy = np.meshgrid(np.linspace(x_min, x_max, 100), np.linspace(y_min, y_max, 1
 Z = logreg.predict(np.c_[xx.ravel(), yy.ravel()])
 Z = Z.reshape(xx.shape)
 
+plt.figure(figsize=(8, 6))
 plt.contourf(xx, yy, Z, alpha=0.2, cmap='coolwarm')
 plt.scatter(X[:, 0], X[:, 1], c=y, cmap='coolwarm', edgecolor='k')
 plt.title("Logistic Regression Decision Boundary")
 plt.xlabel("Feature 1")
 plt.ylabel("Feature 2")
-plt.show()
+plt.savefig("plots/logreg_decision_boundary.png")
+plt.close()
 
 # evaluate accuracy
 accuracy = logreg.score(X_test, y_test)
