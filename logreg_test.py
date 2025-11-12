@@ -35,6 +35,7 @@ plt.xlabel("Feature 1")
 plt.ylabel("Target (y)")
 plt.legend()
 plt.savefig("plots/logreg_feature1.png")
+plt.show()
 plt.close()
 
 # plot 2: all features
@@ -50,6 +51,7 @@ plt.xlabel("Feature 1")
 plt.ylabel("Feature 2")
 plt.legend()
 plt.savefig("plots/logreg_dataset.png")
+plt.show()
 plt.close()
 
 # initialize model and train
@@ -72,6 +74,7 @@ plt.title("Logistic Regression Decision Boundary")
 plt.xlabel("Feature 1")
 plt.ylabel("Feature 2")
 plt.savefig("plots/logreg_decision_boundary.png")
+plt.show()
 plt.close()
 
 # evaluate accuracy

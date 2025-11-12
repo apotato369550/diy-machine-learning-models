@@ -17,4 +17,5 @@ plt.scatter(kmeans.centroids[:, 0], kmeans.centroids[:, 1], marker='*', s=300, c
 plt.title("K-Means Clustering Results")
 plt.legend()
 plt.savefig("plots/kmeans_clustering.png")
+plt.show()
 plt.close()

@@ -41,6 +41,7 @@ plt.xlabel("X feature")
 plt.ylabel("y target")
 plt.legend()
 plt.savefig("plots/linreg_fit.png")
+plt.show()
 plt.close()
 
 

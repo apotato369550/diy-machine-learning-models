@@ -23,6 +23,7 @@ plt.xlabel("Feature 1")
 plt.ylabel("Feature 2")
 plt.legend()
 plt.savefig("plots/naive_bayes_data.png")
+plt.show()
 plt.close()
 
 model = SimpleGaussianNB()
@@ -50,4 +51,5 @@ if X.shape[1] == 2:
     plt.xlabel("Feature 1")
     plt.ylabel("Feature 2")
     plt.savefig("plots/naive_bayes_decision_boundary.png")
+    plt.show()
     plt.close()
