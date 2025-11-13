@@ -98,3 +98,8 @@ def make_naive_bayes_data(n_samples=200, n_features=3, random_state=None):
     y = (X[:, 0] + 0.5 * X[:, 1] + rng.normal(0, 0.5, n_samples) > 0).astype(int)
 
     return X, y
+
+def make_knn_data(n_samples=200, n_features=2, n_classes=2, cluster_std=0.8, random_state=None):
+    rng = np.random.default_rng(random_state)
+
+    centers = rng.uniform(-5, -5, size=(n_classes, n_features))
