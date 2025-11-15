@@ -103,3 +103,26 @@ def make_knn_data(n_samples=200, n_features=2, n_classes=2, cluster_std=0.8, ran
     rng = np.random.default_rng(random_state)
 
     centers = rng.uniform(-5, -5, size=(n_classes, n_features))
+
+    samples_per_class = [n_samples // n_classes] * n_classes
+
+    for i in range(n_samples % n_classes):
+        samples_per_class[i] += 1
+
+    X = []
+    y = []
+
+    for class_idx, n_class_samples in enumerate(samples_per_class):
+        cluster = rng.normal(
+            loc=centers[class_idx],
+            scale=cluster_std,
+            size=(n_class_samples, n_features)
+        )
+        X.append(cluster)
+        y.append(np.full(n_class_samples, class_idx))
+
+    X = np.vstack(X)
+    y = np.concatenate(y)
+
+    indices = rng.permutation(n_samples)
+    return X[indices], y[indices], centers
